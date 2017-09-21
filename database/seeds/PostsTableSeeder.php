@@ -23,7 +23,7 @@ class PostsTableSeeder extends Seeder
         for ($i = 0; $i <10; $i++)
         {
         	$image = "Post_Image_" . rand(1, 5) . ".jpg";
-        	$date = $date->addDays(1);
+        	$date = $date->subMonths(1);
             $publishedDate = clone($date);
 
         	$posts[] = [
@@ -35,7 +35,8 @@ class PostsTableSeeder extends Seeder
         		'image'		=> rand(0,1) == 1? $image : NULL,
         		'created_at' => clone($date->addDays(rand(1,30))),
         		'updated_at' => clone($date),
-                'published_at' => $i < 3 ? $publishedDate : ( rand(0,1) == 0? NULL : $publishedDate->addDays(4))
+                'published_at' => $i < 3 ? $publishedDate : ( rand(0,1) == 0? NULL : $publishedDate->subMonths(4)),
+                'view_count'   => rand(1,10) * 10
         	];
         }
 

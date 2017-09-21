@@ -19,7 +19,7 @@
                 <ul class="categories">
                     @foreach($categories as $category)
                     <li>
-                        <a href="{{ route('category', $category->id) }}"><i class="fa fa-angle-right"></i> {{ $category->title }}</a>
+                        <a href="{{ route('category', $category->slug) }}"><i class="fa fa-angle-right"></i> {{ $category->title }}</a>
                         <span class="badge pull-right">{{ $category->posts->count() }}</span>
                     </li>
                     @endforeach
@@ -33,45 +33,25 @@
             </div>
             <div class="widget-body">
                 <ul class="popular-posts">
+                    @foreach($popularPosts as $post)
                     <li>
+
+                        @if($post->image_thumb_url)
                         <div class="post-image">
-                            <a href="#">
-                                <img src="{{ asset('img/Post_Image_5_thumb.jpg') }}" />
+                            <a href="{{ route('blog.show', $post->slug) }}">
+                                <img src="{{ $post->image_thumb_url }}" />
                             </a>
                         </div>
+                        @endif
+
                         <div class="post-body">
-                            <h6><a href="#">Blog Post #5</a></h6>
+                            <h6><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h6>
                             <div class="post-meta">
-                                <span>36 minutes ago</span>
+                                <span>{{ $post->date }}</span>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="post-image">
-                            <a href="#">
-                                <img src="{{ asset('img/Post_Image_4_thumb.jpg') }}" />
-                            </a>
-                        </div>
-                        <div class="post-body">
-                            <h6><a href="#">Blog Post #4</a></h6>
-                            <div class="post-meta">
-                                <span>36 minutes ago</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="post-image">
-                            <a href="#">
-                                <img src="{{ asset('img/Post_Image_3_thumb.jpg') }}" />
-                            </a>
-                        </div>
-                        <div class="post-body">
-                            <h6><a href="#">Blog Post #3</a></h6>
-                            <div class="post-meta">
-                                <span>36 minutes ago</span>
-                            </div>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

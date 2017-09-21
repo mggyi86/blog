@@ -29,3 +29,12 @@ Route::get('/category/{category}', [
 	'uses' => 'BlogController@category',
 	'as'   => 'category'
 ]);
+
+Route::get('/author/{author}', [
+	'uses'	=> 'BlogController@author',
+	'as'	=> 'author'
+]);
+
+Auth::routes();
+
+Route::get('/home', 'Backend\HomeController@index')->name('home');
