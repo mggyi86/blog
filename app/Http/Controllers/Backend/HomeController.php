@@ -10,6 +10,6 @@ class HomeController extends BackendController
 
     public function index()
     {
-        return view('home');
+        return view('backend.home');
     }
 }

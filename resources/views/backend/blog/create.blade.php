@@ -1,16 +1,27 @@
 @extends('layouts.backend.main')
 
-@section('title', 'MyBlog | Dashboard')
+@section('title', 'MyBlog | Add new post')
 
 @section('content')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dasbhboard
+        Blog
+        <small>Add new post</small>
       </h1>
       <ol class="breadcrumb">
-        <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+        <li>
+        	<a href="{{ url('/home') }}"><i class="fa fa-dashboard">Dashboard</i></a>
+        </li>
+        <li>
+        	<a href="{{ route('backend.blog.index') }}">
+        		Blog
+        	</a>	
+        </li>
+        <li class="active">
+        	All new
+        </li>
       </ol>
     </section>
 
@@ -21,11 +32,12 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body ">
-                    <h3>Welcome to MyBlog!</h3>
-                    <p class="lead text-muted">Hallo {{ Auth::user()->name }}, Welcome to MyBlog</p>
+				{!! Form::model($post, [
+					'method' => 'POST',
+					'route'  => 'backend.blog.store'
+				]) !!}
 
-                    <h4>Get started</h4>
-                    <p><a href="{{ route('backend.blog.create') }}" class="btn btn-primary">Write your first blog post</a> </p>
+				{!! Form::close() !!}
               </div>
               <!-- /.box-body -->
             </div>
@@ -36,4 +48,10 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+
+@section('script')
+	<script type="text/javascript">
+		$('ul.pagination').addClass('no-margin pagination-sm');
+	</script>
 @endsection
