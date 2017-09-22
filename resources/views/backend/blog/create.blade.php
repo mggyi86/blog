@@ -36,6 +36,40 @@
 					'method' => 'POST',
 					'route'  => 'backend.blog.store'
 				]) !!}
+				
+				<div class="form-group">
+					{!! Form::label('title') !!}
+					{!! Form::text('title', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="form-group">
+					{!! Form::label('slug') !!}
+					{!! Form::text('slug', null, ['class' => 'form-control']) !!}
+				</div>		
+				
+				<div class="form-group">
+					{!! Form::label('excerpt') !!}
+					{!! Form::textarea('excerpt', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="form-group">
+					{!! Form::label('body') !!}
+					{!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+				</div>	
+
+				<div class="form-group">
+					{!! Form::label('published_at', 'Publish Date') !!}
+					{!! Form::text('published_at', null, ['class' => 'form-control']) !!}
+				</div>	
+
+				<div class="form-group">
+					{!! Form::label('category_id', 'Category') !!}
+					{!! Form::select('category_id', App\Category::pluck('title', 'id'),null, ['class' => 'form-control', 'placeholder' => 'Choose category']) !!}
+				</div>
+
+				<hr>
+
+				{!! Form::submit('Create new post', ['class' => 'btn btn-primary']) !!}		
 
 				{!! Form::close() !!}
               </div>
