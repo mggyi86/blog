@@ -37,6 +37,12 @@
 						<a href="{{ route('backend.blog.create') }}" class="btn btn-success">Add New</a>
 					</div>
 				</div>
+						            
+                @if(session('message'))
+                    <div class="alert alert-info">
+                        {{ session('message') }}
+                    </div>
+                @endif
 
               	@if( ! $posts->count() )
 				<div class="alert alert-danger">

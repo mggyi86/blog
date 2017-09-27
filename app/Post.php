@@ -8,6 +8,9 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
+
+    protected $fillable = ['title', 'slug', 'excerpt', 'body', 'published_at', 'category_id'];
+
 	protected $dates = ['published_at'];
 
 	public function author() {
@@ -78,6 +81,10 @@ class Post extends Model
 
     public function getDateAttribute($value) {
     	return is_null($this->published_at) ? ' ' : $this->published_at->diffForHumans();
+    }
+
+    public function setPublishedAtAttribute($value) {
+        $this->attributes['published_at'] = $value ?: NULL;
     }
 
     public function scopeLatestFirst($query) {
