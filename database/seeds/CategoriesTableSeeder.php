@@ -34,6 +34,10 @@ class CategoriesTableSeeder extends Seeder
         		'title'	=> 'Photography',
         		'slug'	=> 'photography'
         	],
+            [
+                'title' => 'Uncategorized',
+                'slug'  => 'uncategorized'
+            ],
         ]);
 
         for ($post_id = 1; $post_id <=10; $post_id++) {

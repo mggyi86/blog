@@ -14,7 +14,7 @@ class AddViewCountColumnToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('view_count')->unsigned()->after('image');
+            $table->integer('view_count')->unsigned()->after('image')->nullable();
         });
     }
 
