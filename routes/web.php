@@ -30,6 +30,11 @@ Route::get('/category/{category}', [
 	'as'   => 'category'
 ]);
 
+Route::get('/tag/{tag}', [
+	'uses'	=> 'BlogController@tag',
+	'as'	=> 'tag'
+]);
+
 Route::get('/author/{author}', [
 	'uses'	=> 'BlogController@author',
 	'as'	=> 'author'
